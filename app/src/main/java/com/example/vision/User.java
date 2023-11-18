@@ -18,7 +18,7 @@ public class User {
     @ColumnInfo(name = "is_admin")
     private boolean isAdmin;
 
-    public User(@NonNull String username, @NonNull String password) {
+    public User(@NonNull String username, @NonNull String password, boolean isAdmin) {
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;

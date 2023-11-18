@@ -5,4 +5,10 @@
     <string name="login">Login</string>
     <string name="or_sign_up">or Sign Up!</string>
     <string name="sign_in">Sign in</string>
+    <string name="log_in">Log in</string>
+    <string name="vision">VISION</string>
+    <string name="welcome_user">Welcome User,</string>
+    <string name="log_out">Log Out</string>
+    <string name="admin_only">Admin Only</string>
+    <string name="date">Date</string>
 </resources>

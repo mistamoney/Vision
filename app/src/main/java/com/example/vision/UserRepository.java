@@ -27,4 +27,8 @@ public class UserRepository {
         databaseWriteExecuter.execute(() -> { mUserDao.insert(user);
         });
     }
+
+    public LiveData<User> getUser(String username) {
+        return mUserDao.getUser(username);
+    }
 }

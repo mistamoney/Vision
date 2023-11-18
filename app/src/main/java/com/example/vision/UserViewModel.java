@@ -1,6 +1,7 @@
 package com.example.vision;
 
 import android.app.Application;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -23,5 +24,9 @@ public class UserViewModel extends AndroidViewModel {
 
     public void insert(User user) {
         mRepository.insert(user);
+    }
+
+    public LiveData<User> getUser(String username) {
+        return mRepository.getUser(username);
     }
 }
