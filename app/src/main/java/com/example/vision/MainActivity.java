@@ -43,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public static Intent intentFactory(Context context, int userId){
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("user_id", userId);
+        return intent;
+    }
+
     private boolean isUserLoggedIn() {
         return sharedPreferences.getBoolean("isLoggedIn", false);
     }

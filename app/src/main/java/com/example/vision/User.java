@@ -1,52 +1,55 @@
 package com.example.vision;
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "users")
+import com.example.vision.DB.AppDatabase;
+
+@Entity(tableName = AppDatabase.USER_TABLE)
 public class User {
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo(name = "username")
-    private String username;
 
-    @NonNull
-    @ColumnInfo(name = "password")
-    private String password;
+    @PrimaryKey(autoGenerate = true)
+    private int mUserId;
+    private boolean mAdmin;
+    private String mUserName;
+    private String mPassword;
 
-    @ColumnInfo(name = "is_admin")
-    private boolean isAdmin;
-
-    public User(@NonNull String username, @NonNull String password, boolean isAdmin) {
-        this.username = username;
-        this.password = password;
-        this.isAdmin = isAdmin;
-    }
-
-    @NonNull
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(@NonNull String username) {
-        this.username = username;
-    }
-
-    @NonNull
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(@NonNull String password) {
-        this.password = password;
+    public User(String userName, String password, boolean admin) {
+        mUserName = userName;
+        mPassword = password;
+        mAdmin = admin;
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return mAdmin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        mAdmin = admin;
     }
+
+    public int getUserId() {
+        return mUserId;
+    }
+
+    public void setUserId(int userId) {
+        mUserId = userId;
+    }
+
+    public String getUserName() {
+        return mUserName;
+    }
+
+    public void setUserName(String userName) {
+        mUserName = userName;
+    }
+
+    public String getPassword() {
+        return mPassword;
+    }
+
+    public void setPassword(String password) {
+        mPassword = password;
+    }
+
 }
+

@@ -12,8 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vision"
         tools:targetApi="31">
-
-        <!-- Set SplashActivity as the entry point -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -22,20 +20,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- MainActivity must be exported if it is to be started from SplashActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-
-        <!-- Ensure LoginActivity and LandingPageActivity are also declared here -->
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
-
         <activity
             android:name=".LandingPage"
             android:exported="true" />
-
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="true" />
     </application>
+
 </manifest>

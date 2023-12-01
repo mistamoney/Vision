@@ -7,8 +7,13 @@
     <string name="sign_in">Sign in</string>
     <string name="log_in">Log in</string>
     <string name="vision">VISION</string>
-    <string name="welcome_user">Welcome User,</string>
+    <string name="welcome_user">Welcome, %1$s!</string>
     <string name="log_out">Log Out</string>
     <string name="admin_only">Admin Only</string>
     <string name="date">Date</string>
+    <string name="type_password_again">Type password again</string>
+    <string name="create_a_unique_password">Create a unique password</string>
+    <string name="create_a_unique_username">Create a unique username</string>
+    <string name="sign_up">Sign up</string>
+    <string name="home">Home</string>
 </resources>
