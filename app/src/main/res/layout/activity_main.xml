@@ -5,17 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animationCache="false"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/marble1">
 
-    <TextView
-        android:id="@+id/visionHeader"
-        android:layout_width="263dp"
-        android:layout_height="89dp"
-        android:layout_marginTop="76dp"
-        android:fontFamily="serif"
-        android:gravity="center"
-        android:text="@string/vision"
-        android:textSize="48sp"
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="207dp"
+        android:layout_height="204dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/vision_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +30,8 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintVertical_bias="0.399"
+        android:backgroundTint="@color/black"/>
 
     <Button
         android:id="@+id/buttonSignin"
@@ -44,7 +44,8 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.618" />
+        app:layout_constraintVertical_bias="0.618"
+        android:backgroundTint="@color/black"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

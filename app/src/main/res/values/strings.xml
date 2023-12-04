@@ -16,4 +16,11 @@
     <string name="create_a_unique_username">Create a unique username</string>
     <string name="sign_up">Sign up</string>
     <string name="home">Home</string>
+    <string name="action_settings">action</string>
+    <string name="login_page">Login Page</string>
+    <string name="logout">Log Out</string>
+    <string name="current_goals">Current Goals</string>
+    <string name="home_page">Home</string>
+    <string name="your_goals">Your Goals</string>
+    <string name="your_progress">Your Progress</string>
 </resources>

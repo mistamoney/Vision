@@ -4,16 +4,19 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
 public class AppViewModel extends AndroidViewModel {
     private AppRepository mRepository;
     private final List<User> mAllUsers;
+    private LiveData<List<Goal>> mAllGoals;
     public AppViewModel(@NonNull Application application) {
         super(application);
         mRepository = new AppRepository(application);
         mAllUsers = mRepository.getAllUsers();
+        mAllGoals = mRepository.getAllGoals();
     }
 
     List<User> getAllUser() {
@@ -26,5 +29,9 @@ public class AppViewModel extends AndroidViewModel {
 
     public User getUser(String username) {
         return mRepository.getUser(username);
+    }
+
+    public LiveData<List<Goal>> getAllGoals() {
+        return mAllGoals;
     }
 }
