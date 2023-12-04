@@ -5,39 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="-7dp">
+    tools:layout_editor_absoluteY="-7dp"
+    android:background="@drawable/marble1">
 
     <TextView
         android:id="@+id/text_view_date"
-        android:layout_width="297dp"
-        android:layout_height="37dp"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
         android:text="@string/date"
-        android:textSize="30sp"
+        android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.047" />
 
     <TextView
         android:id="@+id/tvWelcome"
-        android:layout_width="327dp"
-        android:layout_height="105dp"
+        android:layout_width="370dp"
+        android:layout_height="150dp"
         android:gravity="center"
         android:text="@string/welcome_user"
-        android:textSize="48sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.126" />
 
+
+    <Button
+        android:id="@+id/your_goals"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="412dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/your_goals"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/your_progress"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="292dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/your_progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/btnAdminArea"
         android:layout_width="300dp"
         android:layout_height="70dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="264dp"
+        android:backgroundTint="@color/black"
         android:text="@string/admin_only"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,15 +73,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
         tools:visibility="visible" />
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="220dp"
-        android:text="@string/log_out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

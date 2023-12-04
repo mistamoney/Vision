@@ -2,82 +2,115 @@ package com.example.vision;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LandingPage extends AppCompatActivity {
-    private static final String LANDING_PAGE_USERNAME = "com.example.vision.LANDING_PAGE_USERNAME";
-    private static final String PREFS_NAME = "com.example.vision.PrefsFile";
+    private Button mAdminBtn;
+    private static final String LANDING_PAGE_USERNAME = "com.example.myapplication.LANDING_PAGE_USERNAME";
+
+    private String value;
+    private TextView mUsername;
+    private static String adminCheck = "com.example.myapplication.adminCheck";
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_page);
 
-        // Initialize your TextView and Buttons
-        TextView textViewWelcome = findViewById(R.id.tvWelcome);
-        Button btnLogout = findViewById(R.id.btnLogout);
-        Button btnAdminArea = findViewById(R.id.btnAdminArea);
+        String userName = getIntent().getStringExtra(LANDING_PAGE_USERNAME);
 
-        // Set up the logout button
-        btnLogout.setOnClickListener(view -> logout());
+        mAdminBtn = findViewById(R.id.btnAdminArea);
+        mUsername = findViewById(R.id.tvWelcome);
+        mUsername.setText("Welcome " + userName);
+        value = getIntent().getStringExtra(adminCheck);
 
-        // Display the date
+        checkUserIsAdmin();
+
+        displayCalendar();
+
+        Button mGoalsButton = findViewById(R.id.your_goals);
+        mGoalsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LandingPage.this, GoalsPage.class);
+                startActivity(intent);
+            }
+        });
+
+        Button mProgressButton = findViewById(R.id.your_progress);
+        mProgressButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LandingPage.this, ProgressPage.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void checkUserIsAdmin() {
+        if(value != null && value.equalsIgnoreCase("true")) {
+            mAdminBtn.setVisibility(View.VISIBLE);
+            mAdminBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(LandingPage.this, AdminZone.class);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            mAdminBtn.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void displayCalendar() {
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
         TextView textViewDate = findViewById(R.id.text_view_date);
         textViewDate.setText(currentDate);
-
-        // Retrieve the username from the intent or SharedPreferences
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        String username = prefs.getString(LANDING_PAGE_USERNAME, null);
-        if (username == null) {
-            // Fallback: If username is not found in SharedPreferences, get it from the intent
-            username = getIntent().getStringExtra(LANDING_PAGE_USERNAME);
-        }
-
-        // Set the welcome message with the username
-        if (username != null && !username.isEmpty()) {
-            textViewWelcome.setText(getString(R.string.welcome_user, username));
-        } else {
-            textViewWelcome.setText(getString(R.string.welcome_user, "User")); // Default to "User" if username is not provided
-        }
-
-        // Check if the user is an admin and show the admin area button if true
-        String adminStatus = getIntent().getStringExtra("adminCheck");
-        if ("admin".equals(adminStatus)) {
-            btnAdminArea.setVisibility(View.VISIBLE);
-        }
     }
 
-    private void logout() {
-        // Clear the user's session and navigate back to the MainActivity
-        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.clear(); // This will clear all the data in SharedPreferences
-        editor.apply();
-
-        // Start the MainActivity and clear the back stack
-        Intent intent = new Intent(LandingPage.this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish(); // Call this when your activity is done and should be closed
-    }
-
-    public static Intent intentFactory(Context context, int userId, String admin, String userName) {
+    public static Intent intentFactory(Context context, int userId, String admin, String userName){
         Intent intent = new Intent(context, LandingPage.class);
         intent.putExtra(LANDING_PAGE_USERNAME, userName);
-        intent.putExtra("adminCheck", admin);
+        intent.putExtra(adminCheck ,admin);
         intent.putExtra("user_id", userId);
         return intent;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Map<Integer, Class<?>> menuActions = new HashMap<>();
+        menuActions.put(R.id.login_option, LoginActivity.class);
+        menuActions.put(R.id.home_option, LandingPage.class);
+        menuActions.put(R.id.main_option, MainActivity.class);
+
+        Class<?> activityClass = menuActions.get(item.getItemId());
+        if (activityClass != null) {
+            startActivity(new Intent(this, activityClass));
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
