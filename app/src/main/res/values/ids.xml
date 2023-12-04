@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="your_goals" type="id"/>
+    <item name="your_progress" type="id"/>
+</resources>

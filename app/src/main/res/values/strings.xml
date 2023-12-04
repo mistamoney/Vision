@@ -26,4 +26,6 @@
     <string name="user_delete_message">Click button below to view list of users (cannot undo once user is deleted from database)</string>
     <string name="admin_zone">Admin Zone</string>
     <string name="user_list_btn">User List</string>
+    <string name="deadline">Deadline</string>
+    <string name="title">Title</string>
 </resources>
