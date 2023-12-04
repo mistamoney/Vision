@@ -23,4 +23,7 @@
     <string name="home_page">Home</string>
     <string name="your_goals">Your Goals</string>
     <string name="your_progress">Your Progress</string>
+    <string name="user_delete_message">Click button below to view list of users (cannot undo once user is deleted from database)</string>
+    <string name="admin_zone">Admin Zone</string>
+    <string name="user_list_btn">User List</string>
 </resources>

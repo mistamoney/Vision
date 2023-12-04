@@ -35,6 +35,9 @@
         <activity
             android:name=".DeleteUser"
             android:exported="true" />
+        <activity
+            android:name=".AdminZone"
+            android:exported="true"/>
 
     </application>
 
